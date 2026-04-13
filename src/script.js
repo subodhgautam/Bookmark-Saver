@@ -32,7 +32,6 @@ reset_all.addEventListener("click", (e) => {
     e.preventDefault()
     localStorage.clear()
     console.log("all cleared");
-    
     updateBookmarks()
 })
 
@@ -85,6 +84,13 @@ function remove_bookmark(e, button) {
         bookmark.name != parent_name
     })
     localStorage.setItem("bookmarks", JSON.stringify(new_array_after_removal))
-    // updateBookmarks()
-
+    updateBookmarks()
 }
+
+function redirection(e,li) {
+    e.preventDefault()
+    let link = li.querySelector("a").href
+    // window.location.href = link
+    window.open(link,"_blank")
+}
+updateBookmarks()
