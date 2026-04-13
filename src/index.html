@@ -13,14 +13,14 @@
 <div class="main_container bg-gray-200 flex justify-center items-center min-h-screen flex-col gap-6">
 
     <div class="bookmark_container">
-        <h1 class="text-2xl md:w-3xl font-bold text-green-500">Bookmark Saver</h1>
-        <form>
+        <h1 class="text-2xl md:w-3xl font-bold text-green-500 mb-4">Bookmark Saver</h1>
+        <form id="bookmark_form">
             <div class="div">
-                <input type="text" id="bookmark_name" placeholder="Bookmark Name"  required class="" >
+                <input type="text" id="bookmark_name_el" placeholder="Bookmark Name"   class="" >
             </div>
             
             <div class="div">
-                <input type="url" id="bookmark_url" placeholder="Bookmark URL" required >
+                <input type="url" id="bookmark_url_el" placeholder="Bookmark URL"  >
             </div>
             
             <button type="submit" id="add_btn" class="btn bg-green-500  hover:bg-green-700 active:bg-green-300">Add Button</button>
@@ -31,17 +31,32 @@
     
     
     <div class="bookmark_container">
-        <h1>Your Bookmarks</h1>
-        
-        <ul>
-            <li>
-                <span>
-                    <a href="">Twitter</a>
-                    <button>X</button>
-                </span>
-            </li>
-        </ul>
-        <!-- <button id="reset_all">Reset All</button> -->
+        <h1 class="text-2xl font-bold text-blue-400 md:text-3xl mb-4">Your Bookmarks</h1>
+
+
+
+<ul id="bookmarks_list_el" >
+        <!-- DYNAMICALLY ADDED HERE. -->
+
+<template id="template_id">
+  <li class="border-amber-600 border m-3 p-2 px-4 rounded-xl transition-all duration-300 group whole_list">
+    <span class="flex justify-between items-center">
+    <a href="#kadd-btn" target="_blank" class="font-bold md:text-2xl">
+        Twitter
+        <!-- h3 redundant hunxa -->
+        <!-- <h3 class="font-bold md:text-2xl "></h3> -->
+         <!-- yo url wala garauna you need brain, js part will get more complex and that is todo if time allows. -->
+        <!-- <small class="italic text-gray-500">Short and apt. description.</small> -->
+      </a>
+      <button class="remove-bookmark bg-red-400 border-dashed border-red-600 p-1.5 rounded-md w-8 h-8 md:opacity-0 group-hover:opacity-100 transform md:translate-x-4 group-hover:translate-x-0 transition-all ease-out duration-300 delay-100 cursor-pointer" onclick="remove_bookmark(event,this)">X</button>
+    </span>
+  </li>
+
+</template>
+
+
+
+        <button id="reset_all" class="btn bg-red-500  hover:bg-red-700 active:bg-red-300 translate-y-0">Reset All</button>
     </div>
 </body>
 
