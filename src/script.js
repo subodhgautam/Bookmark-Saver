@@ -1,4 +1,3 @@
-
 const bookmarks_list_el = document.getElementById("bookmarks_list_el")
 const add_btn = document.getElementById("add_btn")
 const reset_all = document.getElementById("reset_all")
@@ -27,7 +26,7 @@ add_btn.addEventListener("click", (e) => {
 
 
 
-    // updateBookmarks()
+    updateBookmarks()
 })
 
 reset_all.addEventListener("click", (e) => {
