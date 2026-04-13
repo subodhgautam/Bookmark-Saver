@@ -16,11 +16,11 @@
         <h1 class="text-2xl md:w-3xl font-bold text-green-500 mb-4">Bookmark Saver</h1>
         <form id="bookmark_form">
             <div class="div">
-                <input type="text" id="bookmark_name_el" placeholder="Bookmark Name"   class="" >
+                <input type="text" id="bookmark_name_el" placeholder="Bookmark Name" required >
             </div>
             
             <div class="div">
-                <input type="url" id="bookmark_url_el" placeholder="Bookmark URL"  >
+                <input type="url" id="bookmark_url_el" placeholder="Bookmark URL" required  >
             </div>
             
             <button type="submit" id="add_btn" class="btn bg-green-500  hover:bg-green-700 active:bg-green-300">Add Button</button>
@@ -39,6 +39,7 @@
         <!-- DYNAMICALLY ADDED HERE. -->
 
 <template id="template_id">
+
   <li class="border-amber-600 border m-3 p-2 px-4 rounded-xl transition-all duration-300 group whole_list">
     <span class="flex justify-between items-center">
     <a href="#kadd-btn" target="_blank" class="font-bold md:text-2xl">
@@ -48,11 +49,12 @@
          <!-- yo url wala garauna you need brain, js part will get more complex and that is todo if time allows. -->
         <!-- <small class="italic text-gray-500">Short and apt. description.</small> -->
       </a>
-      <button class="remove-bookmark bg-red-400 border-dashed border-red-600 p-1.5 rounded-md w-8 h-8 md:opacity-0 group-hover:opacity-100 transform md:translate-x-4 group-hover:translate-x-0 transition-all ease-out duration-300 delay-100 cursor-pointer" onclick="remove_bookmark(event,this)">X</button>
+      <button class="remove_bookmark bg-red-400 border-dashed border-red-600 p-1.5 rounded-md w-8 h-8 md:opacity-0 group-hover:opacity-100 transform md:translate-x-4 group-hover:translate-x-0 transition-all ease-out duration-300 delay-100 cursor-pointer" onclick="remove_bookmark(event,this)">X</button>
     </span>
   </li>
 
 </template>
+
 </ul>
 
 

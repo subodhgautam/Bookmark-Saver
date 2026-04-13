@@ -10,7 +10,7 @@ let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || []
 
 add_btn.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("add button");
+    console.log("add button");  
 
     let bookmark_name = bookmark_name_el.value.trim()
     let bookmark_url = bookmark_url_el.value.trim()
@@ -19,12 +19,11 @@ add_btn.addEventListener("click", (e) => {
         bookmark_name,
         bookmark_url
     })
+
     console.log("pushed");
 
     localStorage.setItem("bookmarks", JSON.stringify(bookmarks))
     console.log("storage set");
-
-
 
     updateBookmarks()
 })
@@ -32,15 +31,18 @@ add_btn.addEventListener("click", (e) => {
 reset_all.addEventListener("click", (e) => {
     e.preventDefault()
     localStorage.clear()
+    console.log("all cleared");
+    
     updateBookmarks()
 })
+
 
 function updateBookmarks() {
     console.log("update fn here..");
 
     bookmarks_list_el.innerHTML = ""
     let bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || []
-    console.log("for each inside update");
+    // console.log("for each inside update");
 
     bookmarks.forEach(bookmark => {
         const li = generateBookmark(bookmark)
@@ -53,8 +55,36 @@ function updateBookmarks() {
 
 function generateBookmark(bookmark) {
     const bookmark_item = template_item.content.cloneNode(true)
-    bookmark_item.querySelector("a").textContent = bookmark.name
-    bookmark_item.querySelector("a").href = bookmark.url
+
+    console.log("This is clone of the template", bookmark_item);
+
+    const anchor = bookmark_item.querySelector("a")
+    console.log(anchor);
+    
+    console.log(anchor.textContent,"before");
+    anchor.textContent = bookmark.bookmark_name
+    console.log(anchor.textContent,"after");
+    
+    anchor.href = bookmark.bookmark_url
+
     console.log("returned");
+    console.log(bookmark_item.querySelector("li"));
+    
     return bookmark_item
+}
+
+function remove_bookmark(e, button) {
+    e.preventDefault()
+    e.stopPropagation()
+
+    const parent = button.closest("li")
+    parent_name = parent.querySelector("a").textContent
+    parent.remove()
+
+    let new_array_after_removal = bookmarks.filter((bookmark) => {
+        bookmark.name != parent_name
+    })
+    localStorage.setItem("bookmarks", JSON.stringify(new_array_after_removal))
+    // updateBookmarks()
+
 }
