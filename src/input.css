@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@layer components{
+
+.bookmark_container {
+    @apply flex 
+}
+
+
+}
